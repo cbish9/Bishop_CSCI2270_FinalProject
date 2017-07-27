@@ -9,21 +9,21 @@ The year is 1872 and you, Phileas Fogg, have accepeted a wager of £20,000 to at
 
 ___________________________________________________________________________
 
-Summary
+Summary:
 When the program is initialized, it builds a weighted directed graph with 13 major cities across the globe. Each edge between nodes contains three important pieces of information: the distance in miles between cities, the travel time in days between cities, and a brief message describing the method of travel. When calculating the shortest path, only the distance (miles) between cities is taken into account. Since the point is to make it around the world as fast as possible, the time it will take to travel to another city is unknown to the user until they arrive there. Thus, there is a certain amount of guesswork as to what the fastest route will be, but the travel times are related to the actual distances. These distances were all found using Google Maps, and are to be considered accurate to +/- 100 miles. As one travels to each new city, the location is added to a linked list with previous cities traveled to. Then a message can be send through this linked list, until it reaches the starting point London. At the end of the game, these messages are all retrieved to show the user their chosen path.
 
-How to Run
+How to Run:
 The compiled program has already been compiled and posted. This can be run in a Linux operating system from terminal using the command "./AroundtheWorld". While not tested under Windows/ Mac, the program should run as well using the system specific commands. If one wants to inspect and change the source code provided, they can save the changes to each file and then recompile using the command "g++ -std=c++11 Assignment7.cpp ATW.cpp -o AroundtheWorld". It is required to use a c++11 compiler since the program frequently uses the nullptr keyword, and this was not available in previous versions.
 
-Dependencies
+Dependencies:
 The only libraries used for this program were <iostream>, <vector>, <string>, and <climits>, there are no third party libraries required to by the program.
 
-System Requirements
+System Requirements:
 Tested under Linux (Ubuntu 16.04), but should be working on Windows/Mac as well.
 
-Author
+Author:
 Christopher Bishop
 
-Open Issues/Bugs
+Open Issues/Bugs:
 No known bugs at this time. The next step would be to implement a check for the cityname the user enters. As the program stands right now, the city to travel next to must be entered exactly, or else the menu will repeat itself and ask the user again for a city. A better option would be to implement a check if the city entered is one of the cities to travel to, and inform the user if they entered it incorrectly.
 
