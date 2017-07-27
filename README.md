@@ -16,7 +16,7 @@ How to Run:
 The compiled program has already been compiled and posted. This can be run in a Linux operating system from terminal using the command "./AroundtheWorld". If there is an error message about permissions, enter this command "chmod +x AroundtheWorld". After this the program should be able to run. While not tested under Windows/ Mac, the program should run as well using the system specific commands. If one wants to inspect and change the source code provided, they can save the changes to each file and then recompile using the command "g++ -std=c++11 Assignment7.cpp ATW.cpp -o AroundtheWorld". It is required to use a c++11 compiler since the program frequently uses the nullptr keyword, and this was not available in previous versions.
 
 Dependencies:
-The only libraries used for this program were <iostream>, <vector>, <string>, and <climits>, there are no third party libraries required to by the program.
+The only libraries used for this program were iostream, vector, string, and climits, there are no third party libraries required to by the program.
 
 System Requirements:
 Tested under Linux (Ubuntu 16.04), but should be working on Windows/Mac as well.
