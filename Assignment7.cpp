@@ -7,8 +7,6 @@ Montero Quesada
 #include <iostream>
 #include <string>
 #include "ATW.hpp"
-#include <chrono>
-#include <thread>
 
 using namespace std;
 
@@ -23,8 +21,14 @@ string mainMenu(string location){
 	cout << "====== Day " << g.getDay() << " ======" << endl;
 	if(g.getDay() != 0){
 		cout << "You awake in " << location << " after a " << g.getTravelTime() << " day journey." << endl;
+		cout << "Passepartout: Good morning Monsieur! I have prepared a telegram to notify our friends at home of our progress. " << endl;
+		cout << "It reads '" << g.readMessage() << "' I shall send it now. " << endl;
+		g.sendMessage();
+	}else{
+		cout << "Passepartout: With haste! We must hurry in order succeed in our journey!" << endl;
 	}
-	cout << "Passepartout: Good morning Monsieur! After reviewing our maps, we could travel to the following cities next." << endl;
+
+	cout << "Passepartout: After reviewing our maps, we could travel to the following cities next." << endl;
 		g.printNextCity(location);
 
 		g.Dijkstra(location, "London");
@@ -45,14 +49,10 @@ int main(){
 		"to attempt to circumnavigate the globe within 80 days. Your trusty valet \n"
 		"Passepartout will accompany you along your journey, and due to his extensive \n"
 		"study of maps can provide you with the shortest path back home. However, the \n"
-		"decision is up to you to select your route. Unexpected setbacks such as weather, \n"
-		"changing travel conditions, and interactions with locals will influence your \n"
-		"travel time. Due to the nature of the bet, you are only allowed to travel \n"
-		"eastward, so once you have visited a city you cannot travel back. At each \n"
-		"city you must send a message back home to inform them of your progress. This \n"
-		"message will be send to each previous city for them to transmit again, as a \n"
-		"telegram has only a limited range. It is up to you to select the fastest path \n"
-		"around the world and win the wager!" <<endl;
+		"decision is up to you to select your route. At each city you must send a telegram \n"
+		"back home to inform them of your progress. This message will be sent to each \n"
+		"previous city for them to transmit again, as a telegram has only a limited range. \n"
+		"It is up to you to select the fastest path around the world and win the wager!" <<endl;
 
 		while(1){
 			string location = g.getLocation();
@@ -60,17 +60,20 @@ int main(){
 			g.travelCity(location, user_input);
 
 			location = g.getLocation();
+			//g.printTraveled();
+			
 			if(location == "London"){
 				cout << endl;
-				cout << "===================" << endl;
-				cout << "You made it around the world in "<< g.getDay() <<" days!" << endl;
+				cout << "====== Day " << g.getDay() << " ======" << endl;
+				cout << "Upon returning to London, you collect your £20,000 much to the dismay of \n"
+						"those who believed such a journey was impossible. As a memento to your trip, \n"
+						"all of your telegrams you send home were saved and given back to you. These \n"
+						"are shown below." << endl;
+				g.showTelegrams();
+				g.printTraveled();
 				break;
 			}
-			//this_thread::sleep_for(chrono::milliseconds(2500));				//See references
-
 		}
-
-		
 
 	return 0;
 	
@@ -83,5 +86,6 @@ http://ports.com/sea-route/
 
 https://www.google.com/maps
 
-https://stackoverflow.com/questions/4184468/sleep-for-milliseconds
+Assignment 3
+
 */

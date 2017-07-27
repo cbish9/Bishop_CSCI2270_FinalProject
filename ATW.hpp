@@ -21,6 +21,22 @@ struct vertex{
     vertex * previous;
 };
 
+struct cityVisited{
+	std::string cityName;
+	std::string message;
+	cityVisited * prevCity;
+	cityVisited * nextCity;
+    cityVisited(std::string initcityName, cityVisited *initNext=nullptr,
+      cityVisited *initPrev=nullptr, std::string initMessage=""):
+      cityName(initcityName), message(initMessage), nextCity(initNext),
+      prevCity(initPrev){}
+};
+
+struct city_message{		//This is to show the cities and messages after returning to London.
+	std::string cityName;
+	std::string message;
+};
+
 class Graph
 {
     public:
@@ -36,12 +52,20 @@ class Graph
         void printNextCity(std::string currCity);
         void travelCity(std::string currCity, std::string nextCity);
         void Dijkstra(std::string starting, std::string destination);
+        void sendMessage(std::string);
+        void printTraveled();
+        void sendMessage();
+        std::string readMessage();
+        void showTelegrams();
     private:
     	std::string currCity;
         std::vector<vertex> vertices;
         int day;
         int prevTravel;
-
+        cityVisited * head;
+        cityVisited * tail;
+        cityVisited * lastCityTrav;
+        city_message * travelLog;
 };
 
 #endif
